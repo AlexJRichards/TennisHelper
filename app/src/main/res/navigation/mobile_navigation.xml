@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.tenhelper.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_goalsFragment"
+            app:destination="@id/goalsFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_trackerActivity"
+            app:destination="@id/trackerActivity" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.example.tenhelper.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_editPlayerFragment"
+            app:destination="@id/editPlayerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.example.tenhelper.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/goalsFragment"
+        android:name="com.example.tenhelper.ui.goals.GoalsFragment"
+        android:label="goals_fragment"
+        tools:layout="@layout/goals_fragment" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.tenhelper.MainActivity"
+        android:label="MainActivity" />
+    <activity
+        android:id="@+id/trackerActivity"
+        android:name="com.example.tenhelper.TrackerActivity"
+        android:label="TrackerActivity"/>
+    <fragment
+        android:id="@+id/editPlayerFragment"
+        android:name="com.example.tenhelper.ui.player.EditPlayerFragment"
+        android:label="fragment_edit_player"
+        tools:layout="@layout/fragment_edit_player" >
+        <argument
+            android:name="player_name"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/fitnessFragment"
+        android:name="com.example.tenhelper.ui.fitness.FitnessFragment"
+        android:label="fitness_fragment"
+        tools:layout="@layout/fitness_fragment" >
+        <action
+            android:id="@+id/action_fitnessFragment_to_viewFitnessActivityFragment"
+            app:destination="@id/viewFitnessActivityFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewFitnessActivityFragment"
+        android:name="com.example.tenhelper.ui.fitness.ViewFitnessActivityFragment"
+        android:label="fragment_view_fitness_activity"
+        tools:layout="@layout/fragment_view_fitness_activity" >
+        <argument android:name="fitness_id" />
+    </fragment>
+    <fragment
+        android:id="@+id/setPlayerFragment"
+        android:name="com.example.tenhelper.ui.player.SetPlayerFragment"
+        android:label="fragment_set_player"
+        tools:layout="@layout/fragment_set_player" />
+
+</navigation>
