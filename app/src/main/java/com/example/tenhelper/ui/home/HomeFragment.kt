@@ -133,7 +133,7 @@ class HomeFragment : Fragment() {
                                 }
                                 Column(
                                     modifier = Modifier
-                                        .clickable(onClick = { findNavController().navigate(R.id.goalsFragment) })
+                                        .clickable(onClick = { findNavController().navigate(R.id.action_navigation_home_to_viewGoalsFragment) })
                                         .padding(8.dp)
                                         .align(Alignment.CenterVertically)
                                 ) {
@@ -156,7 +156,7 @@ class HomeFragment : Fragment() {
                                 }
                                 Column(
                                     modifier = Modifier
-                                        .clickable(onClick = { findNavController().navigate(R.id.fitnessFragment) })
+                                        .clickable(onClick = { findNavController().navigate(R.id.action_navigation_home_to_setFitnessPlanFragment) })
                                         .padding(8.dp)
                                         .align(Alignment.CenterVertically)
                                 ) {
@@ -179,7 +179,7 @@ class HomeFragment : Fragment() {
                                 }
                                 Column(
                                     modifier = Modifier
-                                        .clickable(onClick = { })
+                                        .clickable(onClick = {findNavController().navigate(R.id.action_navigation_home_to_fitnessFragment) })
                                         .padding(8.dp)
                                         .align(Alignment.CenterVertically)
                                 ) {
@@ -204,7 +204,7 @@ class HomeFragment : Fragment() {
                                 }
                                 Column(
                                     modifier = Modifier
-                                        .clickable(onClick = { findNavController().navigate(R.id.editPlayerFragment) })
+                                        .clickable(onClick = { findNavController().navigate(R.id.navigation_dashboard) })
                                         .padding(8.dp)
                                         .align(Alignment.CenterVertically)
                                 ) {

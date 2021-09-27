@@ -12,7 +12,7 @@
         android:title="@string/title_dashboard" />
 
     <item
-        android:id="@+id/action_navigation_home_to_tracker"
+        android:id="@+id/action_navigation_home_to_trackerActivity"
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="@string/tracker" />
 

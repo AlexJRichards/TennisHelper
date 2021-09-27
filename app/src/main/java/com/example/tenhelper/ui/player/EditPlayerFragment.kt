@@ -72,7 +72,7 @@ class EditPlayerFragment : Fragment() {
                         }
 
 
-                        var players = playerViewModel.players
+                        var players = playerViewModel.players.value
                         var id = 0
                         for (p in players){
                             if (p.player_name == playerName){

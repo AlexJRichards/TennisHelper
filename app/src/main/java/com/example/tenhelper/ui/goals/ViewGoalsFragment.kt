@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.viewModels
 import com.example.tenhelper.R
+import dagger.hilt.android.AndroidEntryPoint
 
-
-
+@AndroidEntryPoint
 class ViewGoalsFragment : Fragment() {
     val viewModel: GoalsViewModel by viewModels()
 

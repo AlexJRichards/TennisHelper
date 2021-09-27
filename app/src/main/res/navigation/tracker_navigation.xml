@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tracker_navigation"
+    app:startDestination="@id/trackerActivity">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.tenhelper.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <include app:graph="@navigation/mobile_navigation" />
+    <activity
+        android:id="@+id/trackerActivity"
+        android:name="com.example.tenhelper.TrackerActivity"
+        android:label="tracker_fragment"
+        tools:layout="@layout/tracker_fragment" />
+</navigation>

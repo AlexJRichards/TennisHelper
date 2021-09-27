@@ -29,7 +29,9 @@ import com.example.tenhelper.R
 import com.example.tenhelper.databinding.FragmentDashboardBinding
 import com.example.tenhelper.ui.home.HomeFragmentDirections
 import com.example.tenhelper.ui.player.PlayerViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DashboardFragment : Fragment() {
 
     private lateinit var dashboardViewModel: DashboardViewModel

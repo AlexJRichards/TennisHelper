@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.example.tenhelper.databinding.ActivityMainBinding
 import com.example.tenhelper.databinding.TrackerFragmentBinding
 
@@ -28,11 +29,16 @@ class TrackerActivity : AppCompatActivity(), SensorEventListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val navController = findNavController(R.id.nav_host_fragment_activity_main)
         binding = TrackerFragmentBinding.inflate(layoutInflater)
         setContentView(binding?.root)
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         loadData()
         resetSteps()
+        binding.backToHome.setOnClickListener {
+            findNavController().navigate(R.id.home)
+        }
     }
 
 

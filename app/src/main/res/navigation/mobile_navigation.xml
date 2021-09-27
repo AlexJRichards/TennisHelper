@@ -16,6 +16,18 @@
         <action
             android:id="@+id/action_navigation_home_to_trackerActivity"
             app:destination="@id/trackerActivity" />
+        <action
+            android:id="@+id/action_navigation_home_to_viewGoalsFragment"
+            app:destination="@id/viewGoalsFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_fitnessFragment"
+            app:destination="@id/fitnessFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_viewFitnessActivityFragment"
+            app:destination="@id/viewFitnessActivityFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_setFitnessPlanFragment"
+            app:destination="@id/setFitnessPlanFragment" />
     </fragment>
 
     <fragment
@@ -37,7 +49,11 @@
         android:id="@+id/goalsFragment"
         android:name="com.example.tenhelper.ui.goals.GoalsFragment"
         android:label="goals_fragment"
-        tools:layout="@layout/goals_fragment" />
+        tools:layout="@layout/goals_fragment" >
+        <action
+            android:id="@+id/action_goalsFragment_to_viewGoalsFragment"
+            app:destination="@id/viewGoalsFragment" />
+    </fragment>
     <activity
         android:id="@+id/mainActivity"
         android:name="com.example.tenhelper.MainActivity"
@@ -75,6 +91,24 @@
         android:id="@+id/setPlayerFragment"
         android:name="com.example.tenhelper.ui.player.SetPlayerFragment"
         android:label="fragment_set_player"
-        tools:layout="@layout/fragment_set_player" />
+        tools:layout="@layout/fragment_set_player" >
+        <action
+            android:id="@+id/action_setPlayerFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewGoalsFragment"
+        android:name="com.example.tenhelper.ui.goals.ViewGoalsFragment"
+        android:label="fragment_view_goals"
+        tools:layout="@layout/fragment_view_goals" />
+    <fragment
+        android:id="@+id/setFitnessPlanFragment"
+        android:name="com.example.tenhelper.ui.fitness.SetFitnessPlanFragment"
+        android:label="fragment_set_fitness_plan"
+        tools:layout="@layout/fragment_set_fitness_plan" >
+        <action
+            android:id="@+id/action_setFitnessPlanFragment_to_fitnessFragment"
+            app:destination="@id/fitnessFragment" />
+    </fragment>
 
 </navigation>
