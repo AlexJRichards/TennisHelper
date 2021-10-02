@@ -17,29 +17,36 @@ class PlanGenerator(
         var height = player.height.toDouble()
         var times = player.times_per_week
         var level = player.tennis_rating
+        var fitness = player.fitness
         var bmiCatagory : Int = 0
 
+        // Convert tennis rating into 1-10 scale
         level = 11 - level
 
-        if (level >= 5){
+        //BMI Calculation
+        height = height / 100.00 // convert cm to m
+        var bmi = (weight.toDouble() / (height.toFloat() * height.toFloat()))
+
+        // Rate tennis score for plan depending on rating/times per week played
+        if (level > 6){
             if (times >= 4){
                 tennis = 8
             }
             else {
                 tennis = 6
             }
-        }
-
-        if (level <= 6){
+        } else {
             if (times >= 4){
                 tennis = 6
             } else {
                 tennis = 4
             }
         }
-        //weight in kilograms divided by height in meters squared
-        height = height / 100.00 // convert cm to m
-        var bmi = (weight.toDouble() / (height.toFloat() * height.toFloat()))
+        // Score BMI on 1-10 scale, using results from https://www.nhs.uk/common-health-questions/lifestyle/what-is-the-body-mass-index-bmi/
+        //            below 18.5 – you're in the underweight range
+        //            between 18.5 and 24.9 – you're in the healthy weight range
+        //            between 25 and 29.9 – you're in the overweight range
+        //            between 30 and 39.9 – you're in the obese range
 
         if (bmi < 18.5){
             bmiCatagory = 8
@@ -54,45 +61,23 @@ class PlanGenerator(
             bmiCatagory = 1
         }
 
+        // Average three catagories into fitness level for plan
+        fitnessLevel = tennis + bmiCatagory + fitness / 3
 
-        fitnessLevel = tennis + bmiCatagory / 2
-        println("Values of the player")
-        println(bmi)
-        println(weight)
-        println(height)
-        println(fitnessLevel)
-        println(tennis)
-
-
+        // Import plan from fitness view model
         var plans = fitnessViewModel.plans
 
+        // Adapt plan depending on fitness level value
         for (plan in plans.value){
             if (fitnessLevel >= 8){
-                fitnessViewModel.updateLength(plan.id, plan.activityLength.toDouble() * 1.5)
+                fitnessViewModel.updateLength(plan.id, plan.activityLength.toDouble() * 1.2)
             } else if (fitnessLevel <=7 && fitnessLevel >= 6){
                 fitnessViewModel.updateLength(plan.id, plan.activityLength.toDouble() * 1)
             } else if (fitnessLevel <= 4){
-                fitnessViewModel.updateLength(plan.id, plan.activityLength.toDouble() * 0.5)
+                fitnessViewModel.updateLength(plan.id, plan.activityLength.toDouble() * 0.8)
             }
 
         }
 
-//            below 18.5 – you're in the underweight range
-//            between 18.5 and 24.9 – you're in the healthy weight range
-//            between 25 and 29.9 – you're in the overweight range
-//            between 30 and 39.9 – you're in the obese range
-//              https://www.nhs.uk/common-health-questions/lifestyle/what-is-the-body-mass-index-bmi/
-
     }
-
-    // Take Current Fitness Level to Choose how hard workouts be
-
-    // Take in when player wants to peak for
-
-    // Base fitness plan off of ITF one
-
-    // Add to calendar?
-
-    // Record activity option?
-
 }

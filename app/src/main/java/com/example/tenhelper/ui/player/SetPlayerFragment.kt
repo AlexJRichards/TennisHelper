@@ -89,12 +89,12 @@ class SetPlayerFragment : Fragment() {
                                 onValueChange = { name = it },
                                 label = { Text("Name") },
                             )
-                            var age by remember { mutableStateOf("") }
-                            TextField(
-                                value = age,
-                                onValueChange = { age = it },
-                                label = { Text("Age") }
-                            )
+//                            var age by remember { mutableStateOf("") }
+//                            TextField(
+//                                value = age,
+//                                onValueChange = { age = it },
+//                                label = { Text("Age") }
+//                            )
                             var height by remember { mutableStateOf("") }
                             TextField(
                                 value = height,
@@ -113,12 +113,12 @@ class SetPlayerFragment : Fragment() {
                                 onValueChange = { tennisLevel = it },
                                 label = { Text("Tennis Level") },
                             )
-                            var timesPerWeek by remember { mutableStateOf("") }
-                            TextField(
-                                value = timesPerWeek,
-                                onValueChange = { timesPerWeek = it },
-                                label = { Text("How many times do you play tennis a week?") }
-                            )
+//                            var timesPerWeek by remember { mutableStateOf("") }
+//                            TextField(
+//                                value = timesPerWeek,
+//                                onValueChange = { timesPerWeek = it },
+//                                label = { Text("How many times do you play tennis a week?") }
+//                            )
                             var fitness by remember { mutableStateOf("") }
                             TextField(
                                 value = fitness,
@@ -136,7 +136,8 @@ class SetPlayerFragment : Fragment() {
                                         weight.toInt(),
                                         tennisLevel.toDouble(),
                                         fitness.toInt(),
-                                        timesPerWeek.toInt()
+//                                        timesPerWeek.toInt()
+                                    4
                                     )
                                     findNavController().navigate(R.id.action_setPlayerFragment_to_navigation_home)
                                 }) {

@@ -125,7 +125,6 @@ class EditPlayerFragment : Fragment() {
                         val dateToday: Date = Calendar.getInstance().getTime()
                         Button(
                             onClick = {
-//                    val p = Player(0, name, height.toInt(), weight.toInt(), tennisLevel.toDouble(), timesPerWeek.toInt())
                                 playerViewModel.editPlayer(id, name, height.toInt(), weight.toInt(), tennisLevel.toDouble(), fitness.toInt(), timesPerWeek.toInt())
                                 findNavController().navigate(R.id.home)
                             }) {

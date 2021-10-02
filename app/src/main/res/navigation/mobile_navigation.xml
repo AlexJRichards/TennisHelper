@@ -14,9 +14,6 @@
             android:id="@+id/action_navigation_home_to_goalsFragment"
             app:destination="@id/goalsFragment" />
         <action
-            android:id="@+id/action_navigation_home_to_trackerActivity"
-            app:destination="@id/trackerActivity" />
-        <action
             android:id="@+id/action_navigation_home_to_viewGoalsFragment"
             app:destination="@id/viewGoalsFragment" />
         <action
@@ -28,6 +25,9 @@
         <action
             android:id="@+id/action_navigation_home_to_setFitnessPlanFragment"
             app:destination="@id/setFitnessPlanFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_trackerActivity"
+            app:destination="@id/trackerActivity" />
     </fragment>
 
     <fragment
@@ -58,10 +58,6 @@
         android:id="@+id/mainActivity"
         android:name="com.example.tenhelper.MainActivity"
         android:label="MainActivity" />
-    <activity
-        android:id="@+id/trackerActivity"
-        android:name="com.example.tenhelper.TrackerActivity"
-        android:label="TrackerActivity"/>
     <fragment
         android:id="@+id/editPlayerFragment"
         android:name="com.example.tenhelper.ui.player.EditPlayerFragment"
@@ -110,5 +106,10 @@
             android:id="@+id/action_setFitnessPlanFragment_to_fitnessFragment"
             app:destination="@id/fitnessFragment" />
     </fragment>
+    <activity
+        android:id="@+id/trackerActivity"
+        android:name="com.example.tenhelper.TrackerActivity"
+        android:label="tracker_fragment"
+        tools:layout="@layout/tracker_fragment" />
 
 </navigation>
