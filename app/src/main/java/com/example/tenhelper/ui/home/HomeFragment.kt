@@ -87,7 +87,7 @@ class HomeFragment : Fragment() {
                                     Text("Set Player Stats", fontWeight = FontWeight.Bold)
                                     CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
                                         Text(
-                                            "Enter your fitness level and body comp",
+                                            "Before using the application, set your player stats here. This will be used to calculate a fitness plan for you.",
                                             style = MaterialTheme.typography.body2
                                         )
                                     }
@@ -98,31 +98,6 @@ class HomeFragment : Fragment() {
                         Column(
                             modifier = Modifier.padding(8.dp)
                         ) {
-                            Row(
-                                horizontalArrangement = Arrangement.SpaceEvenly
-                            ) {
-                                Surface(
-                                    modifier = Modifier.size(50.dp),
-                                    shape = CircleShape,
-                                    color = MaterialTheme.colors.onSurface.copy(alpha = 0.2f)
-                                ) {
-                                    Image(painterResource(R.drawable.tennis), "Tennis Player")
-                                }
-                                Column(
-                                    modifier = Modifier
-                                        .clickable(onClick = { findNavController().navigate(R.id.action_navigation_home_to_goalsFragment) })
-                                        .padding(8.dp)
-                                        .align(Alignment.CenterVertically)
-                                ) {
-                                    Text("Add Goal", fontWeight = FontWeight.Bold)
-                                    CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
-                                        Text(
-                                            "Set a SMART Goal",
-                                            style = MaterialTheme.typography.body2
-                                        )
-                                    }
-                                }
-                            }
                             Row {
                                 Surface(
                                     modifier = Modifier.size(50.dp),
@@ -250,28 +225,3 @@ class HomeFragment : Fragment() {
     }
 
 }
-
-
-@Composable
-fun TopNavBar() {
-    Column {
-        TopAppBar(
-            elevation = 4.dp,
-            title = {
-                Text("TennisApp")
-            },
-            backgroundColor =  MaterialTheme.colors.primarySurface,
-            navigationIcon = {
-                IconButton(onClick = { }) {
-                    Icon(Icons.Filled.ArrowBack, null)
-                }
-            }, actions = {
-                IconButton(onClick = {/* Do Something*/ }) {
-                    Icon(Icons.Filled.Share, null)
-                }
-                IconButton(onClick = {/* Do Something*/ }) {
-                    Icon(Icons.Filled.Settings, null)
-                }
-            })
-
-}}

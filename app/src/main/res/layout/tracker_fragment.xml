@@ -27,31 +27,27 @@
             android:text="0"
             android:gravity="center"/>
 
-        <Button
-            android:id="@+id/start"
+        <TextView
+            android:id="@+id/distance"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_marginTop="224dp"
+            android:text="Distance (KM)"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/distance_taken"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Start Activity" />
+            android:text="0"
+            android:gravity="center"/>
+
         <Button
             android:id="@+id/reset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Reset" />
-
-        <Button
-        android:id="@+id/stop"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:text="Stop"
-        tools:layout_editor_absoluteX="161dp" />
-
-        <Button
-            android:id="@+id/back_to_home"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
-            android:text="Back to home"/>
 
     </LinearLayout>
 

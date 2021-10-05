@@ -3,13 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/kolya/AndroidStudioProjects/TenHelper/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/kolya/AndroidStudioProjects/TenHelper/app/src/main/res/layout/activity_main.xml" value="0.22191011235955055" />
         <entry key="..\:/Users/kolya/AndroidStudioProjects/TenHelper/app/src/main/res/layout/activity_tracker.xml" value="0.5" />
         <entry key="..\:/Users/kolya/AndroidStudioProjects/TenHelper/app/src/main/res/layout/fragment_dashboard.xml" value="0.67" />
         <entry key="..\:/Users/kolya/AndroidStudioProjects/TenHelper/app/src/main/res/layout/fragment_home.xml" value="0.35645472061657035" />
         <entry key="..\:/Users/kolya/AndroidStudioProjects/TenHelper/app/src/main/res/layout/fragment_set_player.xml" value="0.2006253256904638" />
-        <entry key="..\:/Users/kolya/AndroidStudioProjects/TenHelper/app/src/main/res/layout/tracker_fragment.xml" value="0.25" />
-        <entry key="..\:/Users/kolya/AndroidStudioProjects/TenHelper/app/src/main/res/menu/bottom_nav_menu.xml" value="0.9572815533980582" />
+        <entry key="..\:/Users/kolya/AndroidStudioProjects/TenHelper/app/src/main/res/layout/tracker_fragment.xml" value="0.1" />
+        <entry key="..\:/Users/kolya/AndroidStudioProjects/TenHelper/app/src/main/res/menu/bottom_nav_menu.xml" value="0.16024340770791076" />
       </map>
     </option>
   </component>

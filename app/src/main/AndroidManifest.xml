@@ -11,7 +11,7 @@
         android:name="com.example.tennisapp.TennisApplication"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TenHelper">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".TrackerActivity"
             android:exported="true"

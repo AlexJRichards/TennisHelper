@@ -12,22 +12,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
+import com.example.tenhelper.data.Player
 import com.example.tenhelper.databinding.ActivityMainBinding
 import com.example.tenhelper.databinding.TrackerFragmentBinding
+import com.example.tenhelper.ui.player.PlayerViewModel
+import kotlinx.coroutines.launch
 
 class TrackerActivity : AppCompatActivity(), SensorEventListener {
 
     private var sManager: SensorManager? = null
     private var steps = 0
-
+    val playerViewModel: PlayerViewModel by viewModels()
     private lateinit var binding: TrackerFragmentBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = TrackerFragmentBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
@@ -41,6 +46,7 @@ class TrackerActivity : AppCompatActivity(), SensorEventListener {
         if (sensor.type == Sensor.TYPE_STEP_DETECTOR) {
             steps++
             binding.activityTaken.text = steps.toString()
+            binding.distanceTaken.text = getDistanceRun(steps).toString()
         }
     }
 
@@ -73,9 +79,14 @@ class TrackerActivity : AppCompatActivity(), SensorEventListener {
 
     }
 
-    //function to determine the distance run in kilometers using average step length for men and number of steps
-    fun getDistanceRun(steps: Long): Float {
-        return (steps * 78).toFloat() / 100000.toFloat()
+    //function to determine the distance run in kilometers using average step length for men or women
+    fun getDistanceRun(steps: Int): Double {
+        val players = playerViewModel.players.value
+        if (players[0].gender == "M"){
+            return (2.5 * steps) / 5280
+        } else {
+            return (2.2 * steps) / 5280
+        }
     }
 
 }

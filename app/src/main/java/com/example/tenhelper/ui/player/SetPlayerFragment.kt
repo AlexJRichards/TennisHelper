@@ -64,7 +64,8 @@ class SetPlayerFragment : Fragment() {
                                     .padding(8.dp)
                             ) {
                                 Text(
-                                    text = "Enter the following : Name, Age, BMI, Tennis Level(LTA Rating)",
+                                    text = "Enter the following : Name, BMI, Tennis Level(LTA Rating).\n " +
+                                            "Fitness Level is calculated by bleep test.",
                                     style = MaterialTheme.typography.body1,
                                     textAlign = TextAlign.Center
                                 )
@@ -77,7 +78,7 @@ class SetPlayerFragment : Fragment() {
                                     .padding(8.dp)
                             ) {
                                 Text(
-                                    text = "Set Player",
+                                    text = "In Height/Weight/TennisLevel/Times/Fitness fields, please type only a number",
                                     style = MaterialTheme.typography.h4,
                                     textAlign = TextAlign.Left
                                 )
@@ -89,55 +90,54 @@ class SetPlayerFragment : Fragment() {
                                 onValueChange = { name = it },
                                 label = { Text("Name") },
                             )
-//                            var age by remember { mutableStateOf("") }
-//                            TextField(
-//                                value = age,
-//                                onValueChange = { age = it },
-//                                label = { Text("Age") }
-//                            )
+                            var gender by remember { mutableStateOf("") }
+                            TextField(
+                                value = gender,
+                                onValueChange = { gender = it },
+                                label = { Text("Gender (Type 'M' / 'F' or 'NB')") },
+                            )
                             var height by remember { mutableStateOf("") }
                             TextField(
                                 value = height,
                                 onValueChange = { height = it },
-                                label = { Text("Height") }
+                                label = { Text("Height (CM) as only number") }
                             )
                             var weight by remember { mutableStateOf("") }
                             TextField(
                                 value = weight,
                                 onValueChange = { weight = it },
-                                label = { Text("Weight") }
+                                label = { Text("Weight (KG) as only number") }
                             )
                             var tennisLevel by remember { mutableStateOf("") }
                             TextField(
                                 value = tennisLevel,
                                 onValueChange = { tennisLevel = it },
-                                label = { Text("Tennis Level") },
+                                label = { Text("Tennis Level (LTA Rating)") },
                             )
-//                            var timesPerWeek by remember { mutableStateOf("") }
-//                            TextField(
-//                                value = timesPerWeek,
-//                                onValueChange = { timesPerWeek = it },
-//                                label = { Text("How many times do you play tennis a week?") }
-//                            )
+                            var timesPerWeek by remember { mutableStateOf("") }
+                            TextField(
+                                value = timesPerWeek,
+                                onValueChange = { timesPerWeek = it },
+                                label = { Text("How many times do you play tennis a week?") }
+                            )
                             var fitness by remember { mutableStateOf("") }
                             TextField(
                                 value = fitness,
                                 onValueChange = { fitness = it },
-                                label = { Text("Fitness Test Score") }
+                                label = { Text("Fitness Test Score (Beep Test Score)") }
                             )
-                            val dateToday: Date = Calendar.getInstance().getTime()
+                            val fitScore = calcFitness(fitness.toInt(), gender)
                             Button(
                                 onClick = {
-//                    val p = Player(0, name, height.toInt(), weight.toInt(), tennisLevel.toDouble(), timesPerWeek.toInt())
                                     playerViewModel.addPlayer(
                                         0,
                                         name,
                                         height.toInt(),
                                         weight.toInt(),
                                         tennisLevel.toDouble(),
-                                        fitness.toInt(),
-//                                        timesPerWeek.toInt()
-                                    4
+                                        fitScore,
+                                        gender,
+                                        timesPerWeek.toInt()
                                     )
                                     findNavController().navigate(R.id.action_setPlayerFragment_to_navigation_home)
                                 }) {
@@ -148,5 +148,30 @@ class SetPlayerFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun calcFitness(Score:Int, Gender:String) : Int{
+        if (Gender == "M"){
+            if (Score >= 11){
+                return 10
+            } else if (Score >= 9 && Score < 11){
+                return 8
+            } else if (Score >= 7 && Score < 9){
+                return 6
+            } else if (Score <= 6){
+                return 3
+            }
+        } else {
+            if (Score >= 10){
+                return 10
+            } else if (Score >= 8 && Score < 10){
+                return 8
+            } else if (Score >= 6 && Score < 8){
+                return 6
+            } else if (Score <= 5){
+                return 3
+            }
+        }
+        return 5
     }
 }

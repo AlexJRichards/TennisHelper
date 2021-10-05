@@ -36,10 +36,11 @@ class PlayerViewModel @Inject constructor(private val playerRepository: PlayerRe
         weight: Int,
         tennis_rating:Double,
         fitness: Int,
+        gender: String,
         times_per_week:Int
     ){
         viewModelScope.launch {
-            playerRepository.add(Player(id,player_name,height,weight,tennis_rating,fitness, times_per_week))
+            playerRepository.add(Player(id,player_name,height,weight,tennis_rating,fitness, gender, times_per_week))
         }
     }
 

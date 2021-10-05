@@ -44,7 +44,7 @@ class PlayerRepository @Inject constructor (private val playerDao: PlayerDao) {
     suspend fun getPlayerOne(id:Int) : Player {
         return playerDao.getPlayerWithId(id)
     }
-
+    
     suspend fun getAll(): List<Player> {
         return playerDao.getAll()
     }

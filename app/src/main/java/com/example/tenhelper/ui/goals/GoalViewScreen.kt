@@ -28,29 +28,6 @@ fun ViewGoalsScreen(
             Row() {
                 val allGoals = viewModel.goals.value
                 val completedGoals = viewModel.goals.value
-//                Text(text = "Completed Goals")
-//                LazyColumn() {
-//                    completedGoals.forEach { (goalNum, goalName, goalDescription, goalDate, goalDate2, completed) ->
-//                        item {
-//                            Text(text = goalNum.toString())
-//                            Text(text = goalName)
-//                            Text(text = goalDescription)
-//                            Text(text = goalDate2)
-//                            if(completed){
-//                                Text(text = "Completed")
-//                            } else {
-//                                Text(text = "Uncomplete")
-//                            }
-//                            Button(
-//                                onClick = {
-//                                    viewModel.markGoalUnComplete(goalNum)
-//                                }) {
-//                                Text(text = "Mark Not Completed")
-//                            }
-//                        }
-//
-//                    }
-//                }
                 Column() {
                     Row(verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center,

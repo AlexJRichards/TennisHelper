@@ -12,5 +12,6 @@ data class Player (
     val weight: Int,
     val tennis_rating:Double,
     val fitness:Int,
+    val gender:String,
     val times_per_week:Int,
 )

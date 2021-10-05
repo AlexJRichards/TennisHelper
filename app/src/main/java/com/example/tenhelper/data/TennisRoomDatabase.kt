@@ -12,28 +12,4 @@ abstract class TennisRoomDatabase : RoomDatabase() {
     abstract fun tennisDao(): GoalDao
     abstract fun fitnessDao(): FitnessDao
     abstract fun playerDao(): PlayerDao
-//
-//    companion object {
-//        @Volatile
-//        private var INSTANCE: GoalsRoomDatabase? = null
-//
-//        fun getDatabase(context: Context): GoalsRoomDatabase {
-//            // if the INSTANCE is not null, then return it,
-//            // if it is, then create the database
-//            return INSTANCE ?: synchronized(this) {
-//                val instance = Room.databaseBuilder(
-//                    context.applicationContext,
-//                    GoalsRoomDatabase::class.java,
-//                    "goals_database"
-//                )
-//                    // Wipes and rebuilds instead of migrating if no Migration object.
-//                    // Migration is not part of this codelab.
-//                    .fallbackToDestructiveMigration()
-//                    .build()
-//                INSTANCE = instance
-//                // return instance
-//                instance
-//            }
-//        }
-//    }
 }
