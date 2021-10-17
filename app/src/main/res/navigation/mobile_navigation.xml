@@ -75,6 +75,7 @@
         <action
             android:id="@+id/action_fitnessFragment_to_viewFitnessActivityFragment"
             app:destination="@id/viewFitnessActivityFragment" />
+        <argument android:name="name_fitness_plan" />
     </fragment>
     <fragment
         android:id="@+id/viewFitnessActivityFragment"

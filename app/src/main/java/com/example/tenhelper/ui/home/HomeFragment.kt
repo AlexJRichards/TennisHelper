@@ -87,7 +87,7 @@ class HomeFragment : Fragment() {
                                     Text("Set Player Stats", fontWeight = FontWeight.Bold)
                                     CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
                                         Text(
-                                            "Before using the application, set your player stats here. This will be used to calculate a fitness plan for you.",
+                                            "Before using the application, set your player stats here. This will be used to calculate a fitness plan for you. You also need to complete a bleep test to set fitness level",
                                             style = MaterialTheme.typography.body2
                                         )
                                     }

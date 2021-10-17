@@ -7,7 +7,6 @@ class PlanGenerator(
     fun changeLengths(viewModel: PlayerViewModel,
                       fitnessViewModel: FitnessViewModel){
         var players = viewModel.players.value
-        println(players[0])
         val player = players[0]
         var fitnessLevel : Int
 

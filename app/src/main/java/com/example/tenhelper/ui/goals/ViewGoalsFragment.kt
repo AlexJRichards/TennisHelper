@@ -23,6 +23,10 @@ import androidx.navigation.findNavController
 import com.example.tenhelper.R
 import dagger.hilt.android.AndroidEntryPoint
 
+
+
+
+
 @AndroidEntryPoint
 class ViewGoalsFragment : Fragment() {
     val viewModel: GoalsViewModel by viewModels()
@@ -69,7 +73,7 @@ class ViewGoalsFragment : Fragment() {
                                 ) {
                                     Text("Add Goal", fontWeight = FontWeight.Bold,
                                         modifier = Modifier
-                                            .clickable(onClick = { findNavController().navigate(R.id.action_viewGoalsFragment_to_goalsFragment) })
+                                            .clickable(onClick = { findNavController().navigate(com.example.tenhelper.R.id.action_viewGoalsFragment_to_goalsFragment) })
                                             .padding(8.dp)
                                             .align(Alignment.CenterVertically))
                                 }
@@ -94,6 +98,7 @@ class ViewGoalsFragment : Fragment() {
                                                 Button(
                                                     onClick = {
                                                         viewModel.markGoalUnComplete(goalNum)
+                                                        findNavController().navigate(R.id.viewGoalsFragment)
                                                     }) {
                                                     Text(text = "Mark Incomplete")
                                                 }
@@ -102,6 +107,7 @@ class ViewGoalsFragment : Fragment() {
                                                 Button(
                                                     onClick = {
                                                         viewModel.markGoalCompleted(goalNum)
+                                                        findNavController().navigate(R.id.viewGoalsFragment)
                                                     }) {
                                                     Text(text = "Mark Completed")
                                                 }

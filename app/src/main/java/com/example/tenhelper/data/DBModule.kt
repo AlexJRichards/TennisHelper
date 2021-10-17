@@ -24,8 +24,8 @@ object DBModule {
         TennisRoomDatabase::class.java,
         "tennis_database"
     )
-        .createFromAsset("test.db")
-        .build() // The reason we can construct a database for the repo
+        .createFromAsset("test.db") // populates database fitness plan from existing database file
+        .build()
 
     @Singleton
     @Provides

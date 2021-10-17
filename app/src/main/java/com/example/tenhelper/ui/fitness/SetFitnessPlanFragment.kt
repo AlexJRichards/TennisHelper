@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -21,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.tenhelper.R
+import com.example.tenhelper.ui.dashboard.DashboardFragmentDirections
 import com.example.tenhelper.ui.player.PlayerViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -63,63 +65,24 @@ class SetFitnessPlanFragment : Fragment() {
                                 .padding(8.dp)
                                 .height(60.dp)
                         ) {
-                            var playersNames = mutableListOf<String>()
-                            for (p in playerViewModel.players.value){
-                                playersNames.add(p.player_name)
-                            }
-                            println(playersNames)
+                            var players = playerViewModel.players.value
 
-                            var expanded by remember { mutableStateOf(false) }
-                            var selected by remember { mutableStateOf(playersNames.get(0)) }
-                            val disabledValue = "B"
-
-                            Box(modifier = Modifier
-                                .fillMaxSize()
-                                .wrapContentSize(Alignment.TopStart)) {
-                                Button(onClick = { expanded = true }) {
-                                    Text(
-                                        text = "Select Player",
-                                        style = MaterialTheme.typography.h4,
-                                        textAlign = TextAlign.Left
-                                    )
-                                }
-                                DropdownMenu(
-                                    expanded = expanded,
-                                    onDismissRequest = { expanded = false }
-                                ) {
-                                    playersNames.forEachIndexed { index, s ->
-                                        DropdownMenuItem(onClick = {
-                                            selected = index.toString()
-                                            expanded = false
+                            LazyColumn() {
+                                players.forEach { (id, name, height, weight, rating, timesPerWeek) ->
+                                    item {
+                                        Text(text = "${name}")
+                                        val generator = PlanGenerator()
+                                        Button(onClick = {
+                                            generator.changeLengths(playerViewModel, viewModel)
+                                            val action = SetFitnessPlanFragmentDirections.actionSetFitnessPlanFragmentToFitnessFragment(name)
+                                            findNavController().navigate(action)
                                         }) {
-                                            val disabledText = if (s == disabledValue) {
-                                                " (Disabled)"
-                                            } else {
-                                                ""
-                                            }
-                                            Text(text = s + disabledText)
+                                            Text(text = "Generate ${name}'s plan")
                                         }
                                     }
                                 }
                             }
-
                         }
-                        Row(modifier = Modifier
-                            .fillMaxWidth()
-                            .background(color = Color.White)
-                            .padding(8.dp)){
-                            Box() {
-                                val generator = PlanGenerator()
-                                Button(
-                                    onClick = {
-                                        generator.changeLengths(playerViewModel, viewModel)
-                                        findNavController().navigate(R.id.fitnessFragment)
-                                    }) {
-                                    Text(text = "Submit")
-                                }
-                            }
-                        }
-
 
                     }
             }

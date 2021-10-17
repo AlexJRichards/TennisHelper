@@ -1,5 +1,6 @@
 package com.example.tenhelper.ui.player
 
+import android.content.ClipData
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -51,12 +52,13 @@ class SetPlayerFragment : Fragment() {
                 Scaffold(
 
                 ) {
-                    Column(
+                    LazyColumn(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(8.dp)
                             .background(color = Color.White)
                     ) {
+                        item() {
                             Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
@@ -70,7 +72,8 @@ class SetPlayerFragment : Fragment() {
                                     textAlign = TextAlign.Center
                                 )
                             }
-
+                        }
+                        item(){
                             Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
@@ -79,11 +82,13 @@ class SetPlayerFragment : Fragment() {
                             ) {
                                 Text(
                                     text = "In Height/Weight/TennisLevel/Times/Fitness fields, please type only a number",
-                                    style = MaterialTheme.typography.h4,
+                                    style = MaterialTheme.typography.body1,
                                     textAlign = TextAlign.Left
                                 )
                             }
+                        }
 
+                        item() {
                             var name by remember { mutableStateOf("") }
                             TextField(
                                 value = name,
@@ -126,15 +131,16 @@ class SetPlayerFragment : Fragment() {
                                 onValueChange = { fitness = it },
                                 label = { Text("Fitness Test Score (Beep Test Score)") }
                             )
-                            val fitScore = calcFitness(fitness.toInt(), gender)
+
                             Button(
                                 onClick = {
+                                    val fitScore = calcFitness(fitness.toInt(), gender)
                                     playerViewModel.addPlayer(
                                         0,
                                         name,
                                         height.toInt(),
                                         weight.toInt(),
-                                        tennisLevel.toDouble(),
+                                        calcTennisLevel(tennisLevel.toDouble()).toDouble(),
                                         fitScore,
                                         gender,
                                         timesPerWeek.toInt()
@@ -144,6 +150,7 @@ class SetPlayerFragment : Fragment() {
                                 Text(text = "Submit")
                             }
                         }
+                    }
 
                 }
             }
@@ -173,5 +180,10 @@ class SetPlayerFragment : Fragment() {
             }
         }
         return 5
+    }
+
+    private fun calcTennisLevel(Rating:Double) : Int{
+        val rate = Rating.toInt()
+        return rate
     }
 }

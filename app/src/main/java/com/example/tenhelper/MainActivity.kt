@@ -12,6 +12,7 @@ import android.content.Intent
 import android.view.View
 import android.widget.Button
 import android.R.id.button1
+import android.view.MenuItem
 import com.example.tenhelper.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,10 +32,15 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
+
+        val actionBar = getSupportActionBar()
+        actionBar?.title = "Tennis App"
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.navigation_home, R.id.navigation_dashboard, R.id.trackerActivity))
+            R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_activity))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
@@ -43,6 +49,16 @@ class MainActivity : AppCompatActivity() {
         // TODO Auto-generated method stub
         val i = Intent(applicationContext, TrackerActivity::class.java)
         startActivity(i)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }
