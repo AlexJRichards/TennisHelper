@@ -1,4 +1,4 @@
-package com.example.tenhelper.ui.goals
+package com.example.tenhelper.ui.activity
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -25,13 +25,15 @@ import androidx.navigation.findNavController
 import com.example.tenhelper.R
 import dagger.hilt.android.AndroidEntryPoint
 
-
-
-
-
 @AndroidEntryPoint
-class ViewGoalsFragment : Fragment() {
-    val viewModel: GoalsViewModel by viewModels()
+class ViewActivitiesFragment : Fragment() {
+
+    val viewModel: ActivityViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,9 +49,7 @@ class ViewGoalsFragment : Fragment() {
                     Column(
                     ) {
                         Row() {
-
-                            val allGoals = viewModel.goals.value
-                            val completedGoals = viewModel.goals.value
+                            val allActivity = viewModel.activity.value
                             Column() {
                                 Row(
                                     verticalAlignment = Alignment.CenterVertically,
@@ -60,8 +60,8 @@ class ViewGoalsFragment : Fragment() {
                                         .padding(8.dp)
                                 ) {
                                     Text(
-                                        text = "Goals",
-                                        style = MaterialTheme.typography.h3,
+                                        text = "Completed Activity List",
+                                        style = MaterialTheme.typography.body1,
                                         textAlign = TextAlign.Center
                                     )
                                 }
@@ -73,18 +73,17 @@ class ViewGoalsFragment : Fragment() {
                                         .background(color = Color.White)
                                         .padding(8.dp)
                                 ) {
-                                    Button(
-                                        onClick = {
-                                            findNavController().navigate(R.id.action_viewGoalsFragment_to_goalsFragment)
-                                        }) {
-                                        Text(text = "Add Goal")
-                                    }
+                                Button(
+                                    onClick = {
+                                        findNavController().navigate(R.id.action_viewActivitiesFragment_to_addActivityFragment)
+                                    }) {
+                                    Text(text = "Add Activity")
                                 }
-
+                            }
 
                                 LazyColumn() {
 
-                                    allGoals.forEach { (goalNum, goalName, goalDescription, goalDate, goalDate2, completed) ->
+                                    allActivity.forEach { (id, date, distance) ->
                                         item {
                                             Row(
                                                 modifier = Modifier
@@ -95,41 +94,21 @@ class ViewGoalsFragment : Fragment() {
 
                                             ) {
                                                 Column() {
-                                                    Text(text = "Goal Number: ${goalNum}")
-                                                    Text(text = "Goal Name: ${goalName}")
-                                                    Text(text = "Goal Description: ${goalDescription}")
-                                                    Text(text = "Completion Date: ${goalDate2}")
-                                                    if (completed) {
-                                                        Text(text = "Status: Completed")
-                                                        Button(
-                                                            onClick = {
-                                                                viewModel.markGoalUnComplete(goalNum)
-                                                                findNavController().navigate(R.id.viewGoalsFragment)
-                                                            }) {
-                                                            Text(text = "Mark Incomplete")
-                                                        }
-                                                    } else {
-                                                        Text(text = "Status: Incomplete")
-                                                        Button(
-                                                            onClick = {
-                                                                viewModel.markGoalCompleted(goalNum)
-                                                                findNavController().navigate(R.id.viewGoalsFragment)
-                                                            }) {
-                                                            Text(text = "Mark Completed")
-                                                        }
-                                                    }
+                                                    Text(text = "Date Completed: ${date}")
+                                                    Text(text = "Distance Completed : ${distance} KM")
                                                 }
                                             }
                                         }
                                     }
                                 }
                             }
+
+
                         }
                     }
-
-
                 }
             }
         }
     }
+
 }

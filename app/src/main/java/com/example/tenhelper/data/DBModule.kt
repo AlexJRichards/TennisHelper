@@ -38,4 +38,8 @@ object DBModule {
     @Singleton
     @Provides
     fun playerDaoProvider(db: TennisRoomDatabase) = db.playerDao()
+
+    @Singleton
+    @Provides
+    fun activityDaoProvider(db: TennisRoomDatabase) = db.activityDao()
 }

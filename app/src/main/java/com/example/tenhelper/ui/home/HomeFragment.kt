@@ -20,7 +20,6 @@ import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import com.example.tenhelper.R
-import com.example.tenhelper.databinding.FragmentHomeBinding
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -167,7 +166,29 @@ class HomeFragment : Fragment() {
                                     }
                                 }
                             }
-
+                            Row {
+                                Surface(
+                                    modifier = Modifier.size(50.dp),
+                                    shape = CircleShape,
+                                    color = MaterialTheme.colors.onSurface.copy(alpha = 0.2f)
+                                ) {
+                                    Image(painterResource(R.drawable.tennis), "Tennis Player")
+                                }
+                                Column(
+                                    modifier = Modifier
+                                        .clickable(onClick = {findNavController().navigate(R.id.action_navigation_home_to_viewActivitiesFragment) })
+                                        .padding(8.dp)
+                                        .align(Alignment.CenterVertically)
+                                ) {
+                                    Text("View Completed Activity", fontWeight = FontWeight.Bold)
+                                    CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
+                                        Text(
+                                            "View previously completed activity",
+                                            style = MaterialTheme.typography.body2
+                                        )
+                                    }
+                                }
+                            }
 
                             Row {
                                 Surface(
@@ -206,9 +227,9 @@ class HomeFragment : Fragment() {
                                         .padding(8.dp)
                                         .align(Alignment.CenterVertically)
                                 ) {
-                                    Text("New Activity", fontWeight = FontWeight.Bold)
+                                    Text("Track Activity", fontWeight = FontWeight.Bold)
                                     CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
-                                        Text("Track", style = MaterialTheme.typography.body2)
+                                        Text("Use phone to track a new activity's distance", style = MaterialTheme.typography.body2)
                                     }
                                 }
                             }

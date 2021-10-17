@@ -79,12 +79,13 @@ class TrackerActivity : AppCompatActivity(), SensorEventListener {
     }
 
     //function to determine the distance run in kilometers using average step length for men or women
+    // reference code / calculation
     fun getDistanceRun(steps: Int): Double {
         val players = playerViewModel.players.value
         if (players[0].gender == "M"){
-            return (2.5 * steps) / 5280
+            return (2.5 * steps) / (5280 * 1.6)
         } else {
-            return (2.2 * steps) / 5280
+            return (2.2 * steps) / (5280 * 1.6)
         }
     }
 

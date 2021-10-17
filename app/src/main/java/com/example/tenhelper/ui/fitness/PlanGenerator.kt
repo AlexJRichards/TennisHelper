@@ -19,6 +19,7 @@ class PlanGenerator(
         var fitness = player.fitness
         var bmiCatagory : Int = 0
 
+
         // Convert tennis rating into 1-10 scale
         level = 11 - level
 
