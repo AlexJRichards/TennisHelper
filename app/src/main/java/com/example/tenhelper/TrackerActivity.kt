@@ -72,20 +72,20 @@ class TrackerActivity : AppCompatActivity(), SensorEventListener {
         super.onResume()
         val stepSensor: Sensor? = sManager?.getDefaultSensor((Sensor.TYPE_STEP_DETECTOR))
         if (stepSensor == null){
-            Toast.makeText(this, "No sensor detected on this device", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Tracker not compatible with phone - no step sensor detected", Toast.LENGTH_SHORT).show()
         } else {
             sManager?.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_FASTEST)
         }
-
     }
 
     //function to determine the distance run in kilometers using average step length for men or women
+    // reference code / calculation
     fun getDistanceRun(steps: Int): Double {
         val players = playerViewModel.players.value
         if (players[0].gender == "M"){
-            return (2.5 * steps) / 5280
+            return (2.5 * steps) / (5280 * 1.6)
         } else {
-            return (2.2 * steps) / 5280
+            return (2.2 * steps) / (5280 * 1.6)
         }
     }
 

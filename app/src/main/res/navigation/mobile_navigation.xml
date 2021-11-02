@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_navigation_home_to_trackerActivity"
             app:destination="@id/trackerActivity" />
+        <action
+            android:id="@+id/action_navigation_home_to_viewActivitiesFragment"
+            app:destination="@id/viewActivitiesFragment" />
     </fragment>
 
     <fragment
@@ -48,7 +51,7 @@
     <fragment
         android:id="@+id/goalsFragment"
         android:name="com.example.tenhelper.ui.goals.GoalsFragment"
-        android:label="goals_fragment"
+        android:label="Goals"
         tools:layout="@layout/goals_fragment">
         <action
             android:id="@+id/action_goalsFragment_to_viewGoalsFragment"
@@ -75,6 +78,7 @@
         <action
             android:id="@+id/action_fitnessFragment_to_viewFitnessActivityFragment"
             app:destination="@id/viewFitnessActivityFragment" />
+        <argument android:name="name_fitness_plan" />
     </fragment>
     <fragment
         android:id="@+id/viewFitnessActivityFragment"
@@ -82,6 +86,15 @@
         android:label="View Fitness Plan"
         tools:layout="@layout/fragment_view_fitness_activity" >
         <argument android:name="fitness_id" />
+        <action
+            android:id="@+id/action_viewFitnessActivityFragment_to_fitnessFragment"
+            app:destination="@id/fitnessFragment" />
+        <action
+            android:id="@+id/action_viewFitnessActivityFragment_self2"
+            app:destination="@id/viewFitnessActivityFragment" />
+        <action
+            android:id="@+id/action_viewFitnessActivityFragment_to_trackerActivity"
+            app:destination="@id/trackerActivity" />
     </fragment>
     <fragment
         android:id="@+id/setPlayerFragment"
@@ -114,6 +127,24 @@
         android:id="@+id/trackerActivity"
         android:name="com.example.tenhelper.TrackerActivity"
         android:label="Track Activity"
-        tools:layout="@layout/tracker_fragment" />
+        tools:layout="@layout/activity_tracker" />
+    <fragment
+        android:id="@+id/viewActivitiesFragment"
+        android:name="com.example.tenhelper.ui.activity.ViewActivitiesFragment"
+        android:label="View Activities"
+        tools:layout="@layout/fragment_view_activities">
+        <action
+            android:id="@+id/action_viewActivitiesFragment_to_addActivityFragment"
+            app:destination="@id/addActivityFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addActivityFragment"
+        android:name="com.example.tenhelper.ui.activity.AddActivityFragment"
+        android:label="Add Activity"
+        tools:layout="@layout/fragment_add_activity">
+        <action
+            android:id="@+id/action_addActivityFragment_to_viewActivitiesFragment"
+            app:destination="@id/viewActivitiesFragment" />
+    </fragment>
 
 </navigation>

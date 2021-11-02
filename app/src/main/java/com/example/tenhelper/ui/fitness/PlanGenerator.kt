@@ -7,7 +7,6 @@ class PlanGenerator(
     fun changeLengths(viewModel: PlayerViewModel,
                       fitnessViewModel: FitnessViewModel){
         var players = viewModel.players.value
-        println(players[0])
         val player = players[0]
         var fitnessLevel : Int
 
@@ -19,6 +18,7 @@ class PlanGenerator(
         var level = player.tennis_rating
         var fitness = player.fitness
         var bmiCatagory : Int = 0
+
 
         // Convert tennis rating into 1-10 scale
         level = 11 - level

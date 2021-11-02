@@ -25,12 +25,15 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.tenhelper.R
-import com.example.tenhelper.ui.player.EditPlayerFragmentArgs
+import com.example.tenhelper.ui.activity.ActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.*
 
 @AndroidEntryPoint
 class ViewFitnessActivityFragment : Fragment() {
-    val viewModel: FitnessViewModel by viewModels()
+    val fitnessViewModel: FitnessViewModel by viewModels()
+    val activityViewModel: ActivityViewModel by viewModels()
     val args: ViewFitnessActivityFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -40,7 +43,7 @@ class ViewFitnessActivityFragment : Fragment() {
         val aID = args.fitnessId
         return ComposeView(requireContext()).apply {
             setContent {
-                val plan = viewModel.plans.value
+                val plan = fitnessViewModel.plans.value
                 val id = aID?.toInt()
                 Scaffold(
                 ) {
@@ -84,18 +87,30 @@ class ViewFitnessActivityFragment : Fragment() {
                                                 Text(text = "Description : ${activityDescription}")
                                                 if (!completed!!) {
                                                     Text(text = "Activity not completed")
-                                                    Button(onClick = { viewModel.markComplete(id) }) {
+                                                    Button(onClick = {
+                                                        fitnessViewModel.markComplete(id)
+//                                                        val action = ViewFitnessActivityFragmentDirections.actionViewFitnessActivityFragmentSelf2(
+//                                                            aID
+//                                                        )
+                                                        findNavController().navigate(R.id.action_viewFitnessActivityFragment_to_fitnessFragment)
+                                                    }) {
                                                         Text(text = "Mark Completed")
                                                     }
                                                 } else {
                                                     Text(text = "Activity was completed")
-                                                    Button(onClick = { viewModel.markIncomplete(id) }) {
+                                                    Button(onClick = {
+                                                        fitnessViewModel.markIncomplete(id)
+//                                                        val action = ViewFitnessActivityFragmentDirections.actionViewFitnessActivityFragmentSelf2(
+//                                                            aID
+//                                                        )
+                                                        findNavController().navigate(R.id.action_viewFitnessActivityFragment_to_fitnessFragment)
+                                                    }) {
                                                         Text(text = "Mark Incomplete")
                                                     }
                                                 }
                                                 Button(
                                                     onClick = {
-                                                        findNavController().navigate(R.id.action_navigation_home_to_trackerActivity)
+                                                        findNavController().navigate(R.id.action_viewFitnessActivityFragment_to_trackerActivity)
                                                     }) {
                                                     Text(text = "Track Activity")
                                                 }
@@ -106,9 +121,13 @@ class ViewFitnessActivityFragment : Fragment() {
                                                     onValueChange = { distance = it },
                                                     label = { Text("Distance") }
                                                 )
+                                                val date = Calendar.getInstance().time
+                                                val sdf = SimpleDateFormat("dd.MM.yyyy")
+                                                val formatedDate = sdf.format(date)
                                                 Button(
+
                                                     onClick = {
-                                                        viewModel.addDistance(id, distance.toInt())
+                                                        activityViewModel.addActivity(0,formatedDate,distance.toFloat())
                                                         findNavController().navigate(R.id.fitnessFragment)
                                                     }) {
                                                     Text(text = "Submit")

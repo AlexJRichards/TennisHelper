@@ -70,7 +70,6 @@ class FitnessFragment : Fragment() {
                     ) {
                         plan.forEach { (id, week, day, activityName, activityType, activityLength, activitySets, activityDescription, completed) ->
                             item {
-                                if (week == 1){
                                     Row(
                                         modifier = Modifier
                                             .fillMaxWidth()
@@ -95,47 +94,11 @@ class FitnessFragment : Fragment() {
                                             }) {
                                                 Text(text = "View Activity/Mark Completed")
                                             }
-//                                    if (!completed!!){
-//                                        Text(text = "Activity not completed")
-//                                        Button(onClick = { viewModel.markComplete(id) }) {
-//                                            Text(text = "Mark Completed")
-//                                        }
-//
-//                                    } else {
-//                                        Text(text = "Activity was completed")
-//                                        Button(onClick = { viewModel.markIncomplete(id) }) {
-//                                            Text(text = "Mark Incomplete")
-//                                        }
-//                                    }
 
                                         }
 
                                     }
-                                }
-                                Spacer(modifier = Modifier.padding(2.dp))
-                                if (week == 2){
-                                    Row(
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .border(BorderStroke(1.dp, Color.DarkGray)),
-                                        verticalAlignment = Alignment.CenterVertically,
-                                        horizontalArrangement = Arrangement.SpaceBetween
 
-                                    ) {
-                                        Column() {
-                                            Text(text = "Week ${week}, Day ${day}")
-                                            Text(text = "Activity Name: ${activityName}")
-                                            Text(text = "Type of activity: ${activityType}")
-                                            Text(text = "Length: ${activityLength.toString()} minutes")
-                                            Text(text = "Sets: ${activitySets}")
-                                            Text(text = "Description : ${activityDescription}")
-                                            Button(onClick = { viewModel.markComplete(id) }) {
-                                                Text(text = "Mark Completed")
-                                            }
-                                        }
-
-                                    }
-                                }
                             }
                         }
                     }
