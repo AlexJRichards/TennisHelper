@@ -14,20 +14,20 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GoalsViewModel @Inject constructor(private val goalRepository: GoalRepository) : ViewModel(){
-    var loading: Boolean = true
 
-    //state: notes list
+    // make goals and completed goals variables (In case of future need for seperate lists)
     val goals: MutableState<List<Goal>> = mutableStateOf(listOf())
     val completedGoals: MutableState<List<Goal>> = mutableStateOf(listOf())
 
+    // initialise goals and completed goals
     init {
         viewModelScope.launch {
             goals.value = goalRepository.getAllGoals()
             completedGoals.value = goalRepository.getCompletedGoals()
-            loading = false
         }
     }
 
+    // Add goal to database
     fun addGoal(
         goal_name: String,
         goal_description: String,
@@ -39,16 +39,18 @@ class GoalsViewModel @Inject constructor(private val goalRepository: GoalReposit
         }
     }
 
+    // Return all goals to list of goals
     suspend fun getAllGoals() : List<Goal>{
         return goalRepository.getAllGoals()
     }
 
+    // Mark individual goal completed
     fun markGoalCompleted(goalID:Int){
         viewModelScope.launch {
             goalRepository.markCompleted(goalID)
         }
     }
-
+    // mark goal incomplete
     fun markGoalUnComplete(goalID:Int){
         viewModelScope.launch {
             goalRepository.markUncompleted(goalID)

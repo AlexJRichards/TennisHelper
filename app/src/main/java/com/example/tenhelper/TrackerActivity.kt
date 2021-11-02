@@ -26,6 +26,10 @@ import kotlinx.coroutines.launch
 
 class TrackerActivity : AppCompatActivity(), SensorEventListener {
 
+    // adapted from android track steps java tutorial by lewis gavin
+    // accessed 28/09/2021
+    // https://www.lewisgavin.co.uk/Step-Tracker-Android/
+
     private var sManager: SensorManager? = null
     private var steps = 0
     val playerViewModel: PlayerViewModel by viewModels()
@@ -33,15 +37,19 @@ class TrackerActivity : AppCompatActivity(), SensorEventListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = TrackerFragmentBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
         resetSteps()
+        // initialise sensor manager
         sManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
     }
 
 
     override fun onSensorChanged(event: SensorEvent?) {
+        // detect event and add to steps when step taken
+        // update text on steps and distance strings
         val sensor = event!!.sensor
         if (sensor.type == Sensor.TYPE_STEP_DETECTOR) {
             steps++
@@ -51,6 +59,7 @@ class TrackerActivity : AppCompatActivity(), SensorEventListener {
     }
 
     fun resetSteps(){
+        // set click listener for reset button to reset text to 0
         binding.reset.setOnClickListener {
             steps = 0
             binding.activityTaken.text = "0"
@@ -70,6 +79,10 @@ class TrackerActivity : AppCompatActivity(), SensorEventListener {
 
     override fun onResume(){
         super.onResume()
+        // Code to register sensor and check if tracker compatible with phone
+        // Code taken from youtube tutorial code palace
+        // accessed 01/10/2021
+        // https://www.youtube.com/watch?v=WSx2a99kPY4&ab_channel=CodePalace
         val stepSensor: Sensor? = sManager?.getDefaultSensor((Sensor.TYPE_STEP_DETECTOR))
         if (stepSensor == null){
             Toast.makeText(this, "Tracker not compatible with phone - no step sensor detected", Toast.LENGTH_SHORT).show()
@@ -79,8 +92,11 @@ class TrackerActivity : AppCompatActivity(), SensorEventListener {
     }
 
     //function to determine the distance run in kilometers using average step length for men or women
-    // reference code / calculation
     fun getDistanceRun(steps: Int): Double {
+        // Code to calculate distance in activity
+        // adapted from java tutorial by lewis gavin
+        // accessed 28/09/2021
+        // https://www.lewisgavin.co.uk/Step-Tracker-Android/
         val players = playerViewModel.players.value
         if (players[0].gender == "M"){
             return (2.5 * steps) / (5280 * 1.6)

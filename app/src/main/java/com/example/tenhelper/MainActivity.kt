@@ -46,12 +46,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onClick(v: View?) {
-        // TODO Auto-generated method stub
+        // onclick method to put intent to start tracker activity class when called
         val i = Intent(applicationContext, TrackerActivity::class.java)
         startActivity(i)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Code to return when back button on top toolbar is clicked
+        // Taken from https://www.py4u.net/discuss/604058
+        // Accessed 10/10/21
         when (item.itemId) {
             id.home -> {
                 onBackPressed()

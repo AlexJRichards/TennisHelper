@@ -26,6 +26,8 @@ import com.example.tenhelper.ui.dashboard.DashboardFragmentDirections
 import com.example.tenhelper.ui.player.PlayerViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+// Class for using plangenerator for user to set plan
+
 @AndroidEntryPoint
 class SetFitnessPlanFragment : Fragment() {
     override fun onCreateView(
@@ -66,7 +68,8 @@ class SetFitnessPlanFragment : Fragment() {
                                 .height(60.dp)
                         ) {
                             var players = playerViewModel.players.value
-
+                            // Display name of user and option to generate fitness plan
+                            // Function is adaptable in future if more than one player is using the application
                             LazyColumn() {
                                 players.forEach { (id, name, height, weight, rating, timesPerWeek) ->
                                     item {

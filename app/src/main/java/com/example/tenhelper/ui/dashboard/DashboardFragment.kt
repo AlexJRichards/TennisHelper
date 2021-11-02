@@ -78,7 +78,7 @@ class DashboardFragment : Fragment() {
                         ) {
                             var players = playerViewModel.players.value
 
-
+                            // Choose player to edit in case of multiple options in future
                             LazyColumn() {
                                 players.forEach { (id, name, height, weight, rating, timesPerWeek) ->
                                     item {

@@ -2,6 +2,7 @@ package com.example.tenhelper.ui.fitness
 
 import com.example.tenhelper.ui.player.PlayerViewModel
 
+// Class to generate fitness plan by scoring user and using score to edit pre existing plan
 class PlanGenerator(
 ) {
     fun changeLengths(viewModel: PlayerViewModel,
@@ -11,7 +12,7 @@ class PlanGenerator(
         var fitnessLevel : Int
 
         var tennis : Int = 0
-
+        // import player statistics for calculations
         var weight = player.weight
         var height = player.height.toDouble()
         var times = player.times_per_week
@@ -42,7 +43,9 @@ class PlanGenerator(
                 tennis = 4
             }
         }
-        // Score BMI on 1-10 scale, using results from https://www.nhs.uk/common-health-questions/lifestyle/what-is-the-body-mass-index-bmi/
+        // Score BMI on 1-10 scale,
+        // using results from NHS
+        // https://www.nhs.uk/common-health-questions/lifestyle/what-is-the-body-mass-index-bmi/
         //            below 18.5 – you're in the underweight range
         //            between 18.5 and 24.9 – you're in the healthy weight range
         //            between 25 and 29.9 – you're in the overweight range

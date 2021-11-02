@@ -40,6 +40,7 @@ class ViewFitnessActivityFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // import id from arguments supplied when navigating to the page
         val aID = args.fitnessId
         return ComposeView(requireContext()).apply {
             setContent {
@@ -85,13 +86,11 @@ class ViewFitnessActivityFragment : Fragment() {
                                                 Text(text = "Length: ${activityLength.toString()} minutes")
                                                 Text(text = "Sets: ${activitySets}")
                                                 Text(text = "Description : ${activityDescription}")
+                                                // Check if completed then have appropriate display and nav
                                                 if (!completed!!) {
                                                     Text(text = "Activity not completed")
                                                     Button(onClick = {
                                                         fitnessViewModel.markComplete(id)
-//                                                        val action = ViewFitnessActivityFragmentDirections.actionViewFitnessActivityFragmentSelf2(
-//                                                            aID
-//                                                        )
                                                         findNavController().navigate(R.id.action_viewFitnessActivityFragment_to_fitnessFragment)
                                                     }) {
                                                         Text(text = "Mark Completed")
@@ -100,32 +99,33 @@ class ViewFitnessActivityFragment : Fragment() {
                                                     Text(text = "Activity was completed")
                                                     Button(onClick = {
                                                         fitnessViewModel.markIncomplete(id)
-//                                                        val action = ViewFitnessActivityFragmentDirections.actionViewFitnessActivityFragmentSelf2(
-//                                                            aID
-//                                                        )
                                                         findNavController().navigate(R.id.action_viewFitnessActivityFragment_to_fitnessFragment)
                                                     }) {
                                                         Text(text = "Mark Incomplete")
                                                     }
                                                 }
                                                 Button(
+                                                    // Redirects to track activity screen
                                                     onClick = {
                                                         findNavController().navigate(R.id.action_viewFitnessActivityFragment_to_trackerActivity)
                                                     }) {
                                                     Text(text = "Track Activity")
                                                 }
                                                 Text(text = "Distance Completed? (If LSD/Cardio)")
+                                                // Input distance completed into database and date is was completed on and format date.
                                                 var distance by remember { mutableStateOf("") }
                                                 TextField(
                                                     value = distance,
                                                     onValueChange = { distance = it },
                                                     label = { Text("Distance") }
                                                 )
+                                                // date format code adapted from guide
+                                                // https://www.datetimeformatter.com/how-to-format-date-time-in-kotlin/
+                                                // accessed 2/10/21
                                                 val date = Calendar.getInstance().time
                                                 val sdf = SimpleDateFormat("dd.MM.yyyy")
                                                 val formatedDate = sdf.format(date)
                                                 Button(
-
                                                     onClick = {
                                                         activityViewModel.addActivity(0,formatedDate,distance.toFloat())
                                                         findNavController().navigate(R.id.fitnessFragment)

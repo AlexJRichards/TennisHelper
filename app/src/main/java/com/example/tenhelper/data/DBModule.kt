@@ -10,23 +10,26 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 
 import javax.inject.Singleton
 
-
 @Module
 @InstallIn(SingletonComponent::class)
 object DBModule {
+    // Code for database provider
+    // taken from Stack Overflow post by jsonV (Slightly adapted)
+    // accessed August 2021
+    // https://stackoverflow.com/questions/63146318/how-to-create-and-use-a-room-database-in-kotlin-dagger-hilt
 
-    @Singleton // Tell Dagger-Hilt to create a singleton accessible everywhere in ApplicationCompenent (i.e. everywhere in the application)
+
+    @Singleton // Tell Dagger-Hilt to create a singleton accessible everywhere in ApplicationCompenent
     @Provides
-    fun tennisDatabaseProvider(
-        @ApplicationContext app: Context
-    ) = Room.databaseBuilder(
+    fun tennisDatabaseProvider(@ApplicationContext app: Context)
+    = Room.databaseBuilder(
         app,
         TennisRoomDatabase::class.java,
         "tennis_database"
     )
         .createFromAsset("test.db") // populates database fitness plan from existing database file
         .build()
-
+    //
     @Singleton
     @Provides
     fun goalDaoProvider(db: TennisRoomDatabase) = db.tennisDao()

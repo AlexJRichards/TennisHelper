@@ -27,8 +27,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 
-
-
 @AndroidEntryPoint
 class ViewGoalsFragment : Fragment() {
     val viewModel: GoalsViewModel by viewModels()
@@ -40,16 +38,13 @@ class ViewGoalsFragment : Fragment() {
         return ComposeView(requireContext()).apply {
             setContent {
                 Scaffold(
-                    topBar = {
-
-                    }
                 ) {
                     Column(
                     ) {
                         Row() {
 
+                            // get list of goals
                             val allGoals = viewModel.goals.value
-                            val completedGoals = viewModel.goals.value
                             Column() {
                                 Row(
                                     verticalAlignment = Alignment.CenterVertically,
