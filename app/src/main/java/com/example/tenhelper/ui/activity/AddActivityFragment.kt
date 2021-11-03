@@ -29,6 +29,7 @@ import java.util.*
 
 @AndroidEntryPoint
 class AddActivityFragment : Fragment() {
+    // Fragment to add activity
     val viewModel: ActivityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,6 +76,9 @@ class AddActivityFragment : Fragment() {
                                 onValueChange = { distance = it },
                                 label = { Text("Distance Completed") },
                             )
+                            // date format code adapted from guide
+                            // https://www.datetimeformatter.com/how-to-format-date-time-in-kotlin/
+                            // accessed 2/10/21
                             val date = Calendar.getInstance().time
                             val sdf = SimpleDateFormat("dd.MM.yyyy")
                             val formatedDate = sdf.format(date)

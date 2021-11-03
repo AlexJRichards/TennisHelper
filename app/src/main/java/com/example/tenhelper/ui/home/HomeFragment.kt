@@ -49,7 +49,6 @@ class HomeFragment : Fragment() {
     val playerViewModel: PlayerViewModel by viewModels()
     private lateinit var homeViewModel: HomeViewModel
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -77,6 +76,9 @@ class HomeFragment : Fragment() {
                                 ) {
                                     Image(painterResource(R.drawable.tennis), "Tennis Player")
                                 }
+                                // Code for button layout adapted from Jetpack Compose Tutorial
+                                // https://developer.android.com/jetpack/compose/tutorial
+                                // Accessed July 2021
                                 Column(
                                     modifier = Modifier
                                         .clickable(onClick = { findNavController().navigate(R.id.setPlayerFragment) })
@@ -94,6 +96,9 @@ class HomeFragment : Fragment() {
                             }
                 }
                     } else {
+                        // Code for each button layout adapted from Jetpack Compose Tutorial
+                        // https://developer.android.com/jetpack/compose/tutorial
+                        // Accessed July 2021
                         Column(
                             modifier = Modifier.padding(8.dp)
                         ) {

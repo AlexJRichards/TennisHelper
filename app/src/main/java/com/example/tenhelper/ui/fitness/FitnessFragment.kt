@@ -38,7 +38,7 @@ class FitnessFragment : Fragment() {
     companion object {
         fun newInstance() = FitnessFragment()
     }
-
+    // init viewmodels
     val playerViewModel: PlayerViewModel by viewModels()
     val viewModel: FitnessViewModel by viewModels()
 
@@ -63,6 +63,7 @@ class FitnessFragment : Fragment() {
                             style = MaterialTheme.typography.h3,
                             textAlign = TextAlign.Center)
                     }
+                    // Display fitness plan activities in a column
                     LazyColumn(
                         modifier = Modifier
                             .padding(16.dp)
@@ -86,6 +87,7 @@ class FitnessFragment : Fragment() {
                                             Text(text = "Length: ${activityLength.toString()} minutes")
                                             Text(text = "Sets: ${activitySets}")
                                             Text(text = "Description : ${activityDescription}")
+                                            // Sending id to next fragment to tell which activity to display
                                             Button(onClick = {
                                                 val action = FitnessFragmentDirections.actionFitnessFragmentToViewFitnessActivityFragment(
                                                     id.toString()

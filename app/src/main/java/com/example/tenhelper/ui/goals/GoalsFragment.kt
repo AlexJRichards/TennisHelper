@@ -28,6 +28,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.*
 
+// Add goals screen
+
 @AndroidEntryPoint
 class GoalsFragment : Fragment() {
     val viewModel: GoalsViewModel by viewModels()
@@ -73,7 +75,9 @@ class GoalsFragment : Fragment() {
                                 textAlign = TextAlign.Center
                             )
                         }
-
+                        // Code adapted/learnt from documentation
+                        // https://developer.android.com/jetpack/compose/text
+                        // Accessed various dates from July 2021
                         var goalName by remember { mutableStateOf("") }
                         TextField(
                             value = goalName,
@@ -97,6 +101,7 @@ class GoalsFragment : Fragment() {
                         Button(
                             onClick = {
                                 viewModel.addGoal(goalName, goalDesc, dateToday.toString(), dateBy)
+                                // get new values for goals to display all goals when redirected
                                 viewModel.viewModelScope.launch {
                                     viewModel.goals.value = viewModel.getAllGoals()
                                 }
