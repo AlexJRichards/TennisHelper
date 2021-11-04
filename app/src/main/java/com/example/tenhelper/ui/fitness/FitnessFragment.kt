@@ -35,10 +35,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class FitnessFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = FitnessFragment()
-    }
-    // init viewmodels
+    // viewmodels
     val playerViewModel: PlayerViewModel by viewModels()
     val viewModel: FitnessViewModel by viewModels()
 

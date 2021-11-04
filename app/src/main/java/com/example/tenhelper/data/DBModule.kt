@@ -14,12 +14,12 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DBModule {
     // Code for database provider
-    // taken from Stack Overflow post by jsonV (Slightly adapted)
+    // taken from Stack Overflow post by jsonV (adapted)
     // accessed August 2021
     // https://stackoverflow.com/questions/63146318/how-to-create-and-use-a-room-database-in-kotlin-dagger-hilt
 
 
-    @Singleton // Tell Dagger-Hilt to create a singleton accessible everywhere in ApplicationCompenent
+    @Singleton
     @Provides
     fun tennisDatabaseProvider(@ApplicationContext app: Context)
     = Room.databaseBuilder(

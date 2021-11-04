@@ -33,12 +33,11 @@ class MainActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
+        //Set Title of app
         val actionBar = getSupportActionBar()
         actionBar?.title = "Tennis App"
         actionBar?.setDisplayHomeAsUpEnabled(true)
 
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(setOf(
             R.id.navigation_home, R.id.navigation_dashboard))
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -47,6 +46,9 @@ class MainActivity : AppCompatActivity() {
 
     fun onClick(v: View?) {
         // onclick method to put intent to start tracker activity class when called
+        // adapted from github post by Rahul
+        // accessed Oct 2021
+        // https://stackoverflow.com/questions/45518139/kotlin-android-start-new-activity
         val i = Intent(applicationContext, TrackerActivity::class.java)
         startActivity(i)
     }
