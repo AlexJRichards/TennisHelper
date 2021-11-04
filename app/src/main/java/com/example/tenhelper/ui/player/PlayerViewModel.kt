@@ -11,13 +11,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PlayerViewModel @Inject constructor(private val playerRepository: PlayerRepository) : ViewModel(){
-    var loading: Boolean = true
     var players: MutableState<List<Player>> = mutableStateOf(listOf())
 
     init {
         viewModelScope.launch {
             players.value = playerRepository.getAll()
-            loading = false
         }
     }
 

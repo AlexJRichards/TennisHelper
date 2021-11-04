@@ -14,14 +14,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ActivityViewModel @Inject constructor(private val activityRepository: ActivityRepository) : ViewModel(){
-    var loading: Boolean = true
-
     val activity: MutableState<List<Activity>> = mutableStateOf(listOf())
 
     init {
         viewModelScope.launch {
             activity.value = activityRepository.getAll()
-            loading = false
         }
     }
 
