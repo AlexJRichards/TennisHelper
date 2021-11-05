@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = binding.navView
 
+        // set nav controller
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
         //Set Title of app
