@@ -108,6 +108,7 @@ class HomeFragment : Fragment() {
                                     shape = CircleShape,
                                     color = MaterialTheme.colors.onSurface.copy(alpha = 0.2f)
                                 ) {
+                                    // Tennis image is of myself taken on my phone
                                     Image(painterResource(R.drawable.tennis), "Tennis Player")
                                 }
                                 Column(
