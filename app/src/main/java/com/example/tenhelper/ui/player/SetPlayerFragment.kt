@@ -32,7 +32,6 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.tenhelper.R
 import com.example.tenhelper.ui.fitness.FitnessViewModel
 import com.example.tenhelper.ui.goals.GoalsViewModel
-import com.example.tenhelper.ui.goals.ViewGoalsScreen
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 

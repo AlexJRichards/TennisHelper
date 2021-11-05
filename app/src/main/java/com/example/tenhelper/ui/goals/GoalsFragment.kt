@@ -28,10 +28,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.*
 
-// Add goals screen
-
 @AndroidEntryPoint
 class GoalsFragment : Fragment() {
+    // Add goals fragment
     val viewModel: GoalsViewModel by viewModels()
 
     override fun onCreateView(
@@ -97,7 +96,6 @@ class GoalsFragment : Fragment() {
                             label = { Text("Date By") }
                         )
                         val dateToday: Date = Calendar.getInstance().getTime()
-                        println(dateToday.toString() + " Date Today")
                         Button(
                             onClick = {
                                 viewModel.addGoal(goalName, goalDesc, dateToday.toString(), dateBy)

@@ -122,7 +122,6 @@ class EditPlayerFragment : Fragment() {
                             onValueChange = { timesPerWeek = it },
                             label = { Text("How many times do you play tennis a week?") }
                         )
-                        val dateToday: Date = Calendar.getInstance().getTime()
                         Button(
                             onClick = {
                                 playerViewModel.editPlayer(id, name, height.toInt(), weight.toInt(), tennisLevel.toDouble(), fitness.toInt(), timesPerWeek.toInt())

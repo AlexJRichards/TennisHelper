@@ -98,6 +98,7 @@ class TrackerActivity : AppCompatActivity(), SensorEventListener {
         // accessed 28/09/2021
         // https://www.lewisgavin.co.uk/Step-Tracker-Android/
         val players = playerViewModel.players.value
+        // Return * average step length for male or not
         if (players[0].gender == "M"){
             return (2.5 * steps) / (5280 * 1.6)
         } else {

@@ -4,6 +4,7 @@ package com.example.tenhelper.data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+//class for activity table
 @Entity(tableName = "activity_table")
 data class Activity (
     @PrimaryKey(autoGenerate = true)

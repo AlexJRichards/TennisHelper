@@ -3,6 +3,7 @@ package com.example.tenhelper.data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+//class for goal table
 @Entity(tableName = "goal_table")
 data class Goal (
     @PrimaryKey(autoGenerate = true)
