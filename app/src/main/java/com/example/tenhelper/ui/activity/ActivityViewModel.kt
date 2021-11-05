@@ -16,6 +16,7 @@ import javax.inject.Inject
 class ActivityViewModel @Inject constructor(private val activityRepository: ActivityRepository) : ViewModel(){
     val activity: MutableState<List<Activity>> = mutableStateOf(listOf())
 
+    //init activity list
     init {
         viewModelScope.launch {
             activity.value = activityRepository.getAll()
