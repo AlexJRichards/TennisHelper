@@ -7,22 +7,10 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
-import androidx.navigation.findNavController
-import com.example.tenhelper.data.Player
-import com.example.tenhelper.databinding.ActivityMainBinding
 import com.example.tenhelper.databinding.TrackerFragmentBinding
 import com.example.tenhelper.ui.player.PlayerViewModel
-import kotlinx.coroutines.launch
 
 class TrackerActivity : AppCompatActivity(), SensorEventListener {
 
@@ -30,7 +18,7 @@ class TrackerActivity : AppCompatActivity(), SensorEventListener {
     // accessed 28/09/2021
     // https://www.lewisgavin.co.uk/Step-Tracker-Android/
 
-    private var sManager: SensorManager? = null
+    private var sensorManager: SensorManager? = null
     private var steps = 0
     val playerViewModel: PlayerViewModel by viewModels()
     private lateinit var binding: TrackerFragmentBinding
@@ -43,7 +31,7 @@ class TrackerActivity : AppCompatActivity(), SensorEventListener {
 
         resetSteps()
         // initialise sensor manager
-        sManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
     }
 
 
@@ -83,11 +71,11 @@ class TrackerActivity : AppCompatActivity(), SensorEventListener {
         // Code taken from youtube tutorial code palace
         // accessed 01/10/2021
         // https://www.youtube.com/watch?v=WSx2a99kPY4&ab_channel=CodePalace
-        val stepSensor: Sensor? = sManager?.getDefaultSensor((Sensor.TYPE_STEP_DETECTOR))
+        val stepSensor: Sensor? = sensorManager?.getDefaultSensor((Sensor.TYPE_STEP_DETECTOR))
         if (stepSensor == null){
             Toast.makeText(this, "Tracker not compatible with phone - no step sensor detected", Toast.LENGTH_SHORT).show()
         } else {
-            sManager?.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_FASTEST)
+            sensorManager?.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_FASTEST)
         }
     }
 

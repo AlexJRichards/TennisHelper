@@ -3,9 +3,9 @@
 
 This is an android application for my dissertation project. These installation instructions are for a windows machine.
 
-
 ## Clone the git repository to local device
 - type "git clone https://github.com/AlexJRichards/TennisHelper.git" in console.
+- alternativly use this folder as the import package
 
 ## Install latest version of Android Studio(2020.3.1) Arctic Fox 
 
@@ -13,6 +13,7 @@ This is an android application for my dissertation project. These installation i
 - Click do not import settings during installation
 - if a kotlin plugin update pops up then click update and restart android studio to update
 - choose standard installation
+- import android studio settings that were used in development from AndroidStudioSetting.zip in root folder (Optional) 
 
 ## Open the project
 
